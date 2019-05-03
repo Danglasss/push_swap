@@ -1,0 +1,18 @@
+
+/*
+**  Avant push :
+**
+**  verification des malloc : leaks
+**	verification Norme
+**	checker seg : lui donner un dossier (gerer le - 1 de get_next_line)
+*/
+
+/*
+**	Modifier le sort de la pile de 500 ou de 100 pour gagner 1 point
+*/
+
+commande interessante :
+
+repeat 100 { ARG=`ruby -e "puts (0..2).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l } | awk '($1 >= 3) {print $1}'
+repeat 100 { ARG=`ruby -e "puts (0..2).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l }
+repeat 100 { ARG=`ruby -e "puts (-50..49).to_a.shuffle.join(' ')"`; ./push_swap $ARG | ./checker $ARG }
