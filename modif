@@ -1,0 +1,7 @@
+/*
+** Makefile : relink libft && .h
+** Makefile : make checker && make push_wap
+** Valgrind : telecharger pour invalide wright
+** Segfault : ./checker 5 1 2 3 > rr
+** Instruction : sa && sb || ra && rb ... (checker == annule)
+*/
