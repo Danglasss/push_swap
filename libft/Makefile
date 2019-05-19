@@ -94,7 +94,7 @@ $(NAME) :	$(OBJ) $(SRCS)
 			ranlib $(NAME)
 
 %.o: %.c
-			$(CC) -c $^ $(CFLAG)
+			@$(CC) -c $^ $(CFLAG)
 
 clean :
 			$(RM) $(OBJ)
