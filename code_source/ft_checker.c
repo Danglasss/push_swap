@@ -16,7 +16,7 @@ int		ft_end_sort(int *list_a, int *list_b, int *len, char *num)
 {
 	if (ft_strncmp(num, "rrr", 3) == 0 && ft_strlen(num) == 3)
 	{
-		ft_reverse_all_checker(list_a, list_b, len);
+		ft_reverse_checker(list_a, list_b, len, "r");
 		return (0);
 	}
 	else if (ft_strncmp(num, "rr", 2) == 0 && ft_strlen(num) == 2)
@@ -26,7 +26,7 @@ int		ft_end_sort(int *list_a, int *list_b, int *len, char *num)
 	}
 	else if (ft_strncmp(num, "ss", 2) == 0 && ft_strlen(num) == 2)
 	{
-		ft_swap_all_checker(list_a, list_b);
+		ft_swap_all_checker(list_a, list_b, len);
 		return (0);
 	}
 	return (1);
@@ -41,7 +41,7 @@ void	ft_make_sort(int *l_a, int *list_b, int *len, char **num)
 	{
 		if ((ft_strncmp(num[index], "sa", 2) == 0
 		|| ft_strncmp(num[index], "sb", 2) == 0) && ft_strlen(num[index]) == 2)
-			ft_swap_checker(l_a, list_b, num[index]);
+			ft_swap_checker(l_a, list_b, num[index], len);
 		else if ((ft_strncmp(num[index], "pa", 2) == 0
 		|| ft_strncmp(num[index], "pb", 2) == 0) && ft_strlen(num[index]) == 2)
 			ft_push_checker(l_a, list_b, len, num[index]);

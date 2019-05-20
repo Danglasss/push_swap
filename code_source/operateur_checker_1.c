@@ -17,33 +17,39 @@ void	ft_rotate_all_checker(int *list_a, int *list_b, int *len)
 	int swap;
 	int count;
 
-	count = 0;
-	swap = list_a[0];
-	while (count < len[0])
+	count = -1;
+	if (len[0] >= 1)
 	{
-		list_a[count] = list_a[count + 1];
-		count++;
+		swap = list_a[0];
+		while (++count < len[0])
+			list_a[count] = list_a[count + 1];
+		list_a[len[0]] = swap;
 	}
-	list_a[len[0]] = swap;
-	count = 0;
-	swap = list_b[0];
-	while (count < len[1])
+	count = -1;
+	if (len[1] >= 1)
 	{
-		list_b[count] = list_b[count + 1];
-		count++;
+		swap = list_b[0];
+		while (++count < len[1])
+			list_b[count] = list_b[count + 1];
+		list_b[len[1]] = swap;
 	}
-	list_b[len[1]] = swap;
 }
 
-void	ft_swap_all_checker(int *list_a, int *list_b)
+void	ft_swap_all_checker(int *list_a, int *list_b, int *len)
 {
 	int swap;
 
-	swap = list_a[0];
-	list_a[0] = list_a[1];
-	list_a[1] = swap;
-	swap = list_b[0];
-	list_b[0] = list_b[1];
-	list_b[1] = swap;
+	if (len[0] >= 1)
+	{
+		swap = list_a[0];
+		list_a[0] = list_a[1];
+		list_a[1] = swap;
+	}
+	if (len[1] >= 1)
+	{
+		swap = list_b[0];
+		list_b[0] = list_b[1];
+		list_b[1] = swap;
+	}
 	return ;
 }

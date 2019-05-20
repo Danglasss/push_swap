@@ -12,17 +12,21 @@
 
 #include "../include/assembly.h"
 
-void	ft_swap_checker(int *list_a, int *list_b, char *l)
+/*
+** a faire
+*/
+
+void	ft_swap_checker(int *list_a, int *list_b, char *l, int *len)
 {
 	int	swap;
 
-	if (ft_strncmp(l, "sa", 2) == 0)
+	if (ft_strncmp(l, "sa", 2) == 0 && len[0] >= 1)
 	{
 		swap = list_a[0];
 		list_a[0] = list_a[1];
 		list_a[1] = swap;
 	}
-	else
+	else if (ft_strncmp(l, "sb", 2) == 0 && len[1] >= 1)
 	{
 		swap = list_b[0];
 		list_b[0] = list_b[1];
@@ -33,9 +37,9 @@ void	ft_swap_checker(int *list_a, int *list_b, char *l)
 
 void	ft_push_checker(int *list_a, int *list_b, int *len, char *l)
 {
-	if (ft_strncmp(l, "pb", 2) == 0)
+	if (ft_strncmp(l, "pb", 2) == 0 && len[0] >= 0)
 		ft_push(list_a, list_b, &len[0], &len[1]);
-	else if (ft_strncmp(l, "pa", 2) == 0)
+	else if (ft_strncmp(l, "pa", 2) == 0 && len[1] >= 0)
 		ft_push(list_b, list_a, &len[1], &len[0]);
 	return ;
 }
@@ -45,26 +49,22 @@ void	ft_rotate_checker(int *list_a, int *list_b, int *len, char *l)
 	int swap;
 	int index;
 
-	swap = list_a[0];
-	index = 0;
-	if (ft_strncmp(l, "ra", 2) == 0)
+	if (len[0] >= 1)
+		swap = list_a[0];
+	index = -1;
+	if (ft_strncmp(l, "ra", 2) == 0 && len[0] >= 1)
 	{
-		while (index < len[0])
-		{
+		while (++index < len[0])
 			list_a[index] = list_a[index + 1];
-			index++;
-		}
 		list_a[len[0]] = swap;
 	}
-	swap = list_b[0];
-	index = 0;
-	if (ft_strncmp(l, "rb", 2) == 0)
+	if (len[1] >= 1)
+		swap = list_b[0];
+	index = -1;
+	if (ft_strncmp(l, "rb", 2) == 0 && len[1] >= 1)
 	{
-		while (index < len[1])
-		{
+		while (++index < len[1])
 			list_b[index] = list_b[index + 1];
-			index++;
-		}
 		list_b[len[1]] = swap;
 	}
 }
@@ -74,50 +74,22 @@ void	ft_reverse_checker(int *list_a, int *list_b, int *len, char *l)
 	int swap;
 	int count;
 
-	if (ft_strncmp(l, "rra", 3) == 0)
+	if ((ft_strncmp(l, "rra", 3) == 0 || ft_strncmp(l, "r", 3) == 0)
+	&& len[0] >= 1)
 	{
-		count = len[0];
+		count = len[0] + 1;
 		swap = list_a[len[0]];
-		while (count > 0)
-		{
+		while (--count > 0)
 			list_a[count] = list_a[count - 1];
-			count--;
-		}
 		list_a[0] = swap;
 	}
-	if (ft_strncmp(l, "rrb", 3) == 0)
+	if ((ft_strncmp(l, "rrb", 3) == 0 || ft_strncmp(l, "r", 3) == 0)
+	&& len[1] >= 1)
 	{
-		count = len[1];
+		count = len[1] + 1;
 		swap = list_b[len[1]];
-		while (count > 0)
-		{
+		while (--count > 0)
 			list_b[count] = list_b[count - 1];
-			count--;
-		}
 		list_b[0] = swap;
 	}
-}
-
-void	ft_reverse_all_checker(int *list_a, int *list_b, int *len)
-{
-	int swap;
-	int count;
-
-	count = len[0];
-	swap = list_a[len[0]];
-	while (count > 0)
-	{
-		list_a[count] = list_a[count - 1];
-		count--;
-	}
-	list_a[0] = swap;
-	count = len[1];
-	swap = list_b[len[1]];
-	while (count > 0)
-	{
-		list_b[count] = list_b[count - 1];
-		count--;
-	}
-	list_b[0] = swap;
-	return ;
 }

@@ -2,8 +2,6 @@ PUSH_SWAP = push_swap
 
 CHECKER = checker
 
-LIBF = libft.a
-
 CODE_SOURCES  =	ft_push_swap.c\
 				ft_tool_swap.c\
 				main.c\
@@ -48,9 +46,9 @@ OBJ = $(addprefix $(OB_PATH)/,$(O_NAME))
 
 OBJ_CHECKER = $(addprefix $(OB_PATH)/,$(O_NAME_CHECKER))
 
-OBJ_LIB = $(LIBFT:.c=.o)
-
 CC = gcc
+
+HEADER_PATH = include/assembly.h
 
 PATH_LIBFT = -Llibft
 
@@ -72,7 +70,7 @@ $(CHECKER) :	$(OBJ_CHECKER)
 				@make -C libft/
 				$(CC) $(LIBFT) $(PATH_LIBFT) $(OBJ_CHECKER) -o $(CHECKER)
 
-$(OB_PATH)/%.o:	$(SRC_PATH)/%.c
+$(OB_PATH)/%.o:	$(SRC_PATH)/%.c $(HEADER_PATH) 
 				@mkdir $(OB_PATH) 2> /dev/null || true
 				$(CC) $(CFLAG) $(INCLUDE) -o $@ -c $<
 
@@ -86,3 +84,8 @@ fclean : 		clean
 				$(RM) libft/libft.a
 
 re :			fclean all
+
+norme :
+				@norminette $(addprefix $(SRC_PATH)/,$(CODE_SOURCES))
+				@norminette $(addprefix $(SRC_PATH)/,$(CODE_CHECKER))
+				@norminette $(HEADER_PATH) libft/libft.h

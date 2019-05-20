@@ -119,13 +119,13 @@ int		ft_error(char **content);
 **	ft_check_operateur :
 */
 
-void	ft_swap_checker(int *list_a, int *list_b, char *l);
+void	ft_swap_checker(int *list_a, int *list_b, char *l, int *len);
 void	ft_push_checker(int *list_a, int *list_b, int *len, char *l);
 void	ft_rotate_checker(int *list_a, int *list_b, int *len, char *l);
 void	ft_reverse_checker(int *list_a, int *list_b, int *len, char *l);
 void	ft_reverse_all_checker(int *list_a, int *list_b, int *len);
 void	ft_rotate_all_checker(int *list_a, int *list_b, int *len);
-void	ft_swap_all_checker(int *list_a, int *list_b);
+void	ft_swap_all_checker(int *list_a, int *list_b, int *len);
 void	ft_main_sort(int *list_a, int *list_b, int *len, int large);
 int		ft_compte(int pivot, int sens, int *list, int len);
 void	ft_quicksort(int *list_a, int *list_b, int *len, int *pivot);
